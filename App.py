@@ -1,5 +1,11 @@
 import tkinter as tk
 from tkinter import messagebox
+from transaction_screen import open_transaction_screen
+from balance_sheet import open_balance_sheet
+from customer_balance import open_customer_balance
+from add_customer_screen import open_add_customer_screen
+
+
 
 #Kullanıcı adı şifre kontrolü
 def check_login(username, password):
@@ -19,9 +25,14 @@ def login():
         messagebox.showerror("Giriş Başarısız")
 
 def open_main_window():
-    login_window.destroy()
     main_window = tk.Tk()
     main_window.title("Ana Ekran")
+    
+    tk.Button(main_window, text="İşlem Ekranı", command=open_transaction_screen).pack()
+    tk.Button(main_window, text="Bilanço", command=open_balance_sheet).pack()
+    tk.Button(main_window, text="Müşteri Bilançosu", command=open_customer_balance).pack()
+    tk.Button(main_window, text="Müşteri Ekle", command=open_add_customer_screen).pack()
+    
     main_window.mainloop()
 
 login_window = tk.Tk()
@@ -39,14 +50,3 @@ tk.Button(login_window, text="Giriş Yap", command=login).pack()
 
 login_window.mainloop()
 
-def open_main_window():
-    login_window.destroy()
-    main_window = tk.Tk()
-    main_window.title("Ana Ekran")
-    
-    tk.Button(main_window, text="İşlem Ekranı", command=open_transaction_screen).pack()
-    tk.Button(main_window, text="Bilanço", command=open_balance_sheet).pack()
-    tk.Button(main_window, text="Müşteri Bilançosu", command=open_customer_balance).pack()
-    tk.Button(main_window, text="Müşteri Ekle", command=open_add_customer_screen).pack()
-    
-    main_window.mainloop()

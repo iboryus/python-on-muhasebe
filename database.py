@@ -1,16 +1,14 @@
 import sqlite3
 
-#Veritabanı bağlantısı
 def create_connection():
     connection = sqlite3.connect('bookkeeping.db')
     return connection
 
-#Tablolar
 def create_tables():
     connection = create_connection()
     cursor = connection.cursor()
 
-    #Müşteriler
+    # Müşteriler tablosu
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS customers (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -19,7 +17,8 @@ def create_tables():
             address TEXT
         )
     ''')
-    # İşlemler
+
+    # İşlemler tablosu
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS transactions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,6 +33,6 @@ def create_tables():
     connection.commit()
     connection.close()
 
-
-    if __name__ == '__main__':
-        create_tables()
+# Bu dosyayı çalıştırarak tabloları oluşturun
+if __name__ == '__main__':
+    create_tables()
