@@ -19,12 +19,12 @@ def login():
         messagebox.showerror("Giriş Başarısız")
 
 def open_main_window():
-    login_windows.destrol()
-    main_window = tk.TK()
+    login_window.destroy()
+    main_window = tk.Tk()
     main_window.title("Ana Ekran")
     main_window.mainloop()
 
-login_window = tk.TK()
+login_window = tk.Tk()
 login_window.title("Giriş Ekranı")
 
 tk.Label(login_window, text="Kullanıcı Adı").pack()
@@ -38,3 +38,15 @@ entry_password.pack()
 tk.Button(login_window, text="Giriş Yap", command=login).pack()
 
 login_window.mainloop()
+
+def open_main_window():
+    login_window.destroy()
+    main_window = tk.Tk()
+    main_window.title("Ana Ekran")
+    
+    tk.Button(main_window, text="İşlem Ekranı", command=open_transaction_screen).pack()
+    tk.Button(main_window, text="Bilanço", command=open_balance_sheet).pack()
+    tk.Button(main_window, text="Müşteri Bilançosu", command=open_customer_balance).pack()
+    tk.Button(main_window, text="Müşteri Ekle", command=open_add_customer_screen).pack()
+    
+    main_window.mainloop()
